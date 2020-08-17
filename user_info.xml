@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<aliases>
+<alias name="user_info">
+<description><![CDATA[How are you feeling ? Usage is pep_talk <emotion>]]></description>
+<queries>
+<query>
+<sql><![CDATA[
+SELECT DBMS_METADATA.GET_DDL(
+    'USER',
+    :NAME
+)
+  FROM DUAL
+UNION ALL
+SELECT DBMS_METADATA.GET_GRANTED_DDL(
+    'ROLE_GRANT',
+    GRANTEE
+)
+  FROM DBA_ROLE_PRIVS
+ WHERE GRANTEE = :NAME
+   AND ROWNUM = 1
+UNION ALL
+SELECT DBMS_METADATA.GET_GRANTED_DDL(
+    'SYSTEM_GRANT',
+    GRANTEE
+)
+  FROM DBA_SYS_PRIVS          SP,
+       SYSTEM_PRIVILEGE_MAP   SPM
+ WHERE SP.GRANTEE = :NAME
+   AND SP.PRIVILEGE  = SPM.NAME
+   AND SPM.PROPERTY <> 1
+   AND ROWNUM        = 1
+UNION ALL
+SELECT DBMS_METADATA.GET_GRANTED_DDL(
+    'OBJECT_GRANT',
+    GRANTEE
+)
+  FROM DBA_TAB_PRIVS
+ WHERE GRANTEE = :NAME
+   AND ROWNUM = 1]]></sql>
+</query>
+</queries>
+</alias>
+</aliases>
