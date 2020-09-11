@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<aliases>
+<alias name="x_disp_cur">
+<description><![CDATA[DBMS_XPLAN.DISPLAY_CURSOR]]></description>
+<queries>
+<query>
+<sql><![CDATA[
+SET LINE 100
+SELECT * FROM table(DBMS_XPLAN.DISPLAY_CURSOR(:SQL_ID,0))
+/
+  ]]></sql>
+</query>
+</queries>
+</alias>
+</aliases>

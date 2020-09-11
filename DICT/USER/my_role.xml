@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<aliases>
+<alias name="my_role">
+<description><![CDATA[MY_ROLES]]></description>
+<queries>
+<query>
+<sql><![CDATA[
+SET LINE 100
+SELECT USERNAME
+       , GRANTED_ROLE
+       , ADMIN_OPTION
+  FROM USER_ROLE_PRIVS
+/
+  ]]></sql>
+</query>
+</queries>
+</alias>
+</aliases>

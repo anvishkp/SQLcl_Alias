@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<aliases>
+<alias name="lock_tx">
+<description><![CDATA[How are you feeling ? Usage is pep_talk <emotion>]]></description>
+<queries>
+<query>
+<sql><![CDATA[
+SET LINE 100
+select username,
+         v$lock.sid,
+         trunc(id1/power(2,16)) rbs,
+         bitand(id1,to_number('ffff','xxxx'))+0 slot,
+         id2 seq,
+         lmode,
+         request
+  from v$lock, v$session
+  where v$lock.type = 'TX'
+    and v$lock.sid = v$session.sid
+    and v$session.username = USER
+  ]]></sql>
+</query>
+</queries>
+</alias>
+</aliases>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<aliases>
+<alias name="about">
+<description><![CDATA[How are you feeling ? Usage is pep_talk <emotion>]]></description>
+<queries>
+<query>
+<sql><![CDATA[
+SET LINE 100
+
+  ]]></sql>
+</query>
+</queries>
+</alias>
+</aliases>

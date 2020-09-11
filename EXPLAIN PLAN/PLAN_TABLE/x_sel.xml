@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<aliases>
+<alias name="x_sel">
+<description><![CDATA[SELECT FROM PLAN_TABLE]]></description>
+<queries>
+<query>
+<sql><![CDATA[
+SET LINE 100
+select lpad(' ', 2*(level-1))||operation||'  '||options||'  '||object_name plan
+       , PT.CARDINALITY
+       , PT.CPU_COST
+       , PT.IO_COST
+       , PT.COST
+    from plan_table PT
+    start with id = 0
+    connect by prior id = parent_id
+/
+
+select lpad(' ', 2*(level-1))||operation||'  '||options||'  '||object_name plan
+       , PT.OBJECT_NAME 
+       , PT.OPERATION
+       , PT.FILTER_PREDICATES
+       , PT.POSITION
+       , PT.COST
+    from plan_table PT
+    start with id = 0
+    connect by prior id = parent_id
+/
+  ]]></sql>
+</query>
+</queries>
+</alias>
+</aliases>

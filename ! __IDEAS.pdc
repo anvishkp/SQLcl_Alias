@@ -1,0 +1,6 @@
+- V$PARAMETER - вывод параметров (по подставляемому имени параметра)
+- V$SESSION
+- V$OBJECT_USAGE
+- NLS_SESSION_PARAMETERS VIEW
+- коммент по колонке или таблице ALL_TAB_COMMENTS / ALL_COL_COMMENTS
+- инфа по ограничениям USER_CONSTRAINTS

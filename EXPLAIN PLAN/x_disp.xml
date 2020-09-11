@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<aliases>
+<alias name="x_disp">
+<description><![CDATA[How are you feeling ? Usage is pep_talk <emotion>]]></description>
+<queries>
+<query>
+<sql><![CDATA[
+SET LINE 100
+SELECT * FROM table(DBMS_XPLAN.DISPLAY)
+/
+  ]]></sql>
+</query>
+</queries>
+</alias>
+</aliases>

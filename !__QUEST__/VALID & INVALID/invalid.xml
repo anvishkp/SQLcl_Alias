@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<aliases>
+<alias name="invalid">
+<description><![CDATA[How are you feeling ? Usage is pep_talk <emotion>]]></description>
+<queries>
+<query>
+<sql><![CDATA[
+
+col c1 heading 'owner' format a15
+col c2 heading 'name' format a40
+col c3 heading 'type' format a10
+
+ttitle 'Invalid|Objects'
+
+select
+   object_type c3,
+   object_name c2
+from
+   user_objects
+where
+   status != 'VALID'
+order by
+   object_type
+/
+  ]]></sql>
+</query>
+</queries>
+</alias>
+</aliases>

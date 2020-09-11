@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<aliases>
+<alias name="tab_drop">
+<description><![CDATA[DROP TABLE]]></description>
+<queries>
+<query>
+<plsql><![CDATA[
+SET SERVEROUTPUT OFF;
+SET LINE 100;
+EXEC EXECUTE IMMEDIATE 'DROP TABLE ' || :TAB_NAME
+SET SERVEROUTPUT ON;
+PROMPT TABLE DROPED
+
+  ]]></plsql>
+</query>
+</queries>
+</alias>
+</aliases>

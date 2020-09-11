@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<aliases>
+<alias name="x_sql_id_token">
+<description><![CDATA[
+       Get SQL_ID by token
+]]></description>
+<queries>
+<query>
+<sql><![CDATA[
+SET LINE 100
+SELECT SQL_ID
+       , S.SQL_TEXT
+  FROM V$SQL S
+ WHERE S.SQL_TEXT LIKE '%' || :TOKEN ||'%'
+/
+  ]]></sql>
+</query>
+</queries>
+</alias>
+</aliases>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<aliases>
+<alias name="ind_info">
+<description><![CDATA[How are you feeling ? Usage is pep_talk <emotion>]]></description>
+<queries>
+<query>
+<sql><![CDATA[
+SET LINE 100
+PROMPT BASIC INFO
+SELECT UI.INDEX_NAME
+       ,UI.INDEX_TYPE
+       ,UI.TABLE_NAME
+       ,IC.COLUMN_NAME
+       ,UI.TABLESPACE_NAME
+  FROM USER_INDEXES       UI
+       , USER_IND_COLUMNS IC
+ WHERE UI.INDEX_NAME = IC.INDEX_NAME
+   AND UI.TABLE_NAME = IC.TABLE_NAME
+   AND UI.INDEX_NAME = :IND_NAME
+/
+
+PROMPT
+PROMPT FEATURES
+SELECT UI.UNIQUENESS
+       , UI.COMPRESSION
+       , UI.INITIAL_EXTENT
+       , UI.NEXT_EXTENT
+       , UI.PCT_FREE
+       , UI.LOGGING
+  FROM USER_INDEXES UI
+ WHERE UI.INDEX_NAME = :IND_NAME
+/
+
+PROMPT 
+PROMPT STRUCTURE
+SELECT UI.NUM_ROWS
+       , UI.blevel
+       , UI.LEAF_BLOCKS
+       , UI.DISTINCT_KEYS
+       , UI.CLUSTERING_FACTOR
+  FROM USER_INDEXES UI
+ WHERE UI.INDEX_NAME = :IND_NAME
+/
+  ]]></sql>
+</query>
+</queries>
+</alias>
+</aliases>

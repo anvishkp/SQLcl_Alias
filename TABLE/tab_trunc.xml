@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<aliases>
+<alias name="tab_trunc">
+<description><![CDATA[TRUNCATE TABLE]]></description>
+<queries>
+<query>
+<plsql><![CDATA[
+EXEC EXECUTE IMMEDIATE 'TRUNCATE TABLE ' || :TAB_NAME
+PROMPT TABLE TRUNCATED
+  ]]></plsql>
+</query>
+</queries>
+</alias>
+</aliases>

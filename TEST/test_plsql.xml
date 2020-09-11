@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<aliases>
+<alias name="plsql">
+<description><![CDATA[How are you feeling ? Usage is pep_talk <emotion>]]></description>
+<queries>
+<query>
+<plsql><![CDATA[
+
+SET LINE 100;
+EXEC EXECUTE IMMEDIATE 'DROP TABLE ' || :TAB_NAME
+SET SERVEROUTPUT ON;
+PROMPT TABLE :TAB_NAME DROPED
+/
+  ]]></plsql>
+</query>
+</queries>
+</alias>
+</aliases>
